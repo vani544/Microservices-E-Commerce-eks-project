@@ -2,6 +2,7 @@
 
 # Update system packages
 sudo yum update -y
+sudo yum install -y wget
 git --version
 
 # Install essential tools
@@ -26,7 +27,7 @@ sudo systemctl start jenkins
 #systemctl status jenkins
 
 # Install Terraform
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 sudo yum install -y terraform
 terraform -v
 

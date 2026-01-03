@@ -8,9 +8,18 @@ resource "aws_instance" "ec2" {
   root_block_device {
     volume_size = 30
   }
+  metadata_options {
+    http_tokens = "required"
+  }
+
   user_data = templatefile("./install-tools.sh", {})
 
   tags = {
     Name = var.instance_name
   }
+  depends_on = [
+    aws_subnet.public-subnet1,
+    aws_security_group.security-group,
+    aws_iam_instance_profile.instance-profile
+  ]  
 }
